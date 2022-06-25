@@ -1,0 +1,138 @@
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+
+}
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Public Sans", sans-serif;
+    line-height: 1.3;
+    font-size: $font-md;
+    font-weight: $fw-default;
+    color: $grayishBlue;
+    overflow-x: hidden;
+    &.noscroll{
+        overflow: hidden;
+    }
+    @include breakpoint-up(large){
+        font-size: $font-lg;
+    }
+}
+h1,
+h2,
+h3{
+    margin-top: 0;
+    text-transform: capitalize;
+    font-weight: $fw-default;
+    color: $darkBlue;
+    line-height: 1.15;
+}
+h1{
+    font-size: 2.31rem;
+    margin-bottom: 1.5rem;
+    @include breakpoint-up(large){
+        font-size: $font-xlg;
+    }
+}
+h2{
+    font-size: 1.875rem;
+    margin-bottom: 1.5625rem;
+    @include breakpoint-up(large){
+        font-size: 2.25rem;
+        margin-bottom: 2.25rem;
+
+    }
+}
+
+
+p{
+    line-height: 1.5;
+    margin-bottom: 2.25rem;
+}
+//links globals
+a, a:visited, a:hover{
+    text-decoration: none;
+}
+//buttons globbals
+button, .button{
+    padding: .875rem 2.875rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    font-size: $font-md;
+    color: $white;
+    text-transform: capitalize;
+    display: inline-block;
+    border: none;
+    font-weight: $fw-highlight;
+    background:linear-gradient(to right, $limeGreen, $brightCyan);
+    transition: opacity $transition-fast;
+    &:hover{
+        opacity: .75;
+    }
+}
+//spacing
+    .container{
+        max-width: 69.375rem;        
+        margin: 0 auto;
+
+        &--p{
+        padding: 2.25rem 1.5rem ;
+        }
+        &--py{
+            padding:2.25rem 0;
+        }
+        &--px{
+            padding: 0 1.5rem;
+        }
+        &--pr{
+            padding-right: 1.5rem;
+        }
+        &--pl{
+            padding-left: 1.5rem;
+        }
+        &--pt{
+            padding-top: 2.25rem;
+        }
+        &--pb{
+            padding-bottom: 2.25rem;
+        }
+    }
+
+    
+//flexbox styles
+
+.flex{
+    display: flex;
+    &-jc-spb{
+        justify-content: space-between;
+    }
+    &-jc-c{
+        justify-content: center;
+    }
+    &-ai-c{
+        align-items: center;
+    }
+    &-ai-b{
+        align-content: space-between;
+    }
+}
+
+//visibility - breakpoints
+.hide-for-mobile{
+    //hide for mobile and tabled
+    @include breakpoint-down(medium){
+        display: none;
+    }
+}
+
+.hide-for-dekstop{
+    //hide for dekstop viewport widths
+    @include breakpoint-up(large){
+        display: none;
+    }
+}

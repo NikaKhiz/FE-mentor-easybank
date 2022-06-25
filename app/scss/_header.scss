@@ -1,0 +1,142 @@
+.header{
+    nav{
+        position: relative;
+        background-color: $white;
+        padding-top: 1.0625rem;
+        padding-bottom: 1.0625rem;
+        & > *{
+        text-transform: capitalize;
+        }
+    }
+    &__logo{
+        img{
+            width: 8.8125rem;
+            height: 1.375rem;
+        }
+    }
+
+    &__hamburger{ // mobile menu button
+        width: 32px;
+        height: 28px;
+        cursor: pointer;
+        .line{
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: $darkBlue;
+            position: relative;
+            transition: all $transition-fast;
+            box-shadow: 0 0 2px rgba(0,0,0,.3);
+            &::before{
+                content:"";
+                position: absolute;
+                width: 100%;
+                height: inherit;
+                background-color: $darkBlue;
+                transform: translateY(-10px);
+                transition: transform $transition-fast;
+                box-shadow: 0 0 2px rgba(0,0,0,.3);
+            }
+            &::after{
+                content:"";
+                position: absolute;
+                width: 100%;
+                height: inherit;
+                background-color: $darkBlue;
+                transform: translateY(10px);
+                transition: transform $transition-fast;
+                box-shadow: 0 0 2px rgba(0,0,0,.3);
+            }
+        }
+        &.open{
+            .line{
+                transform: translateX(-30px);
+                background-color: transparent;
+                box-shadow: none;
+                &::before{
+                    transform: rotate(45deg) translate(22px,-22px);
+                }
+                &::after{
+                    transform: rotate(-45deg) translate(22px,22px);
+                }
+            }
+        }
+    }
+    .overlay{
+        position: absolute;
+        z-index: 9;
+        opacity: 0;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, $darkBlue, transparent);
+        transition: opacity $transition-fast;
+        pointer-events: none;
+        &.fadein{
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+    &__links{
+        gap: 2rem;
+        list-style-type: none;
+        li a{
+            font-size: $font-sm;
+            color: $grayishBlue;
+            transition: color $transition-fast;
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -.875rem;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(to right, $limeGreen, $brightCyan);
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transform $transition-fast;
+            }
+            &:hover{
+                color:$darkBlue;
+                &::after{
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+
+    .mobile__menu{
+        position: absolute;
+        z-index: 10;
+        width: calc(100% - 3rem);
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $white;
+        padding: 1.625rem;
+        border-radius: 5px;
+        margin-top: 1.5rem;
+        transition: opacity $transition-fast;
+        opacity: 0;
+        pointer-events: none;
+        .mobile__links{
+            list-style-type: none;
+            li a{
+                display: block;
+                padding: .625rem;
+                text-transform: capitalize;
+                text-align: center;
+                color: $darkBlue;
+                font-size: $font-lg;
+            }
+        }
+        &.fadein{
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+    }
+
+}
